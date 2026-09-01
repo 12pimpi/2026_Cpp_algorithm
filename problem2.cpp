@@ -8,5 +8,7 @@ int main(){
     cin >> a >> b;
     double result = ((a * 2 ) / (1 + (a / b)));
     result = round(result * 100) / 100;
+    cout << fixed;
+    cout.precision(2);
     cout << result << endl;
 }
