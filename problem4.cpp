@@ -9,7 +9,8 @@ struct time_plan{
 
 int main(){
     int count;
-    int max_index_value = 0;
+    int second_index_value = 0;
+    int result = 0;
     cin >> count;
 
     int (*input)[2] = new int[count][2];
@@ -17,13 +18,24 @@ int main(){
         cin >> input[i][0] >> input[i][1];
     }
     for(int i = 0;i < count; i++){
-        if(input[i][1] > max_index_value){
-            max_index_value = input[i][1];
-        } else if(input[i][0] > max_index_value){
-            max_index_value = input[i][0];
+        int sec_index_value = input[i][1];
+        int temp_result = 1;
+        for(int j = 0;j < count; j++){
+            if(sec_index_value <= input[j][0]){
+                temp_result++;
+                sec_index_value = input[j][1];
+                j = -1;
+                if(temp_result > result){
+                    result = temp_result;
+                }
+            } else {
+                continue;
+            }
         }
     }
-    cout << max_index_value << endl;
+
+
+    cout << result << endl;
 
     delete[] input;
 }
