@@ -1,11 +1,8 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 int main(){
-    int input;
-    cin >> input;
-    for(int i = 1; i < 10; i++){
-        cout << input << " * " << i << " = " << input * i << endl;
-    }
+    int a = 10;
+    int b = 20;
+    printf("%d %d", a, b);
+    return 0;
 }
