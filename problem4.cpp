@@ -32,8 +32,8 @@ void quickSort(int (*input)[2], int left, int right){
 
 	int p = partition(input,left,right);
 
-	swapRow(input,left,p-1);
-	swapRow(input,p+1,right);
+	quickSort(input,left,p-1);
+	quickSort(input,p+1,right);
 }
 
 int main(){
@@ -51,6 +51,8 @@ int main(){
     for(int i = 0; i < count; i++){
         cout << input[i][0] << " " << input[i][1] << endl;
     }
+
+
 
 	delete[] input;
 }
