@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
 
@@ -37,6 +38,8 @@ void quickSort(int (*input)[2], int left, int right){
 }
 
 int main(){
+	SetConsoleOutputCP(CP_UTF8);
+
 	int count;
 	cin >> count;
 	int (*input)[2] = new int[count][2];
@@ -47,12 +50,21 @@ int main(){
 
 	quickSort(input, 0, count - 1);
 
-    cout << "Sorted array : " << endl;
-    for(int i = 0; i < count; i++){
-        cout << input[i][0] << " " << input[i][1] << endl;
-    }
+    // cout << "Sorted array : " << endl;
+    // for(int i = 0; i < count; i++){
+    //     cout << input[i][0] << " " << input[i][1] << endl;
+    // }
 
+	int result = 0;
+	int lastEnd = 0;
+	for(int i = 0; i < count; i++){
+		if(input[i][0] >= lastEnd){
+			result++;
+			lastEnd = input[i][1];
+		}
+	}
 
+	cout << "최다 회의 횟수 : " << result << endl;
 
 	delete[] input;
 }
